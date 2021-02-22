@@ -1,12 +1,8 @@
 package ru.project.alfastonks.client;
 
-import feign.Param;
-import feign.RequestLine;
 import org.springframework.cloud.openfeign.FeignClient;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 
 
@@ -14,5 +10,4 @@ import org.springframework.web.bind.annotation.RequestParam;
 public interface GifClient {
     @GetMapping(value = "/random")
     ResponseEntity<?> getGif(@RequestParam("api_key") String api_key, @RequestParam("tag") String tag);
-
 }

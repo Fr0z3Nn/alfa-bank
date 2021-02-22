@@ -12,7 +12,6 @@ public class GifService {
 
     private final GifClient gifClient;
 
-
     private final String API_KEY = "hidyT0yooJt3jmgfSpg9CsPge7xEEZqb";
 
     public ResponseEntity<?> getGif(String tag) {

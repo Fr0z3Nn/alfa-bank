@@ -17,7 +17,7 @@ public class CurrencyController {
     private final GifService gifService;
 
     @GetMapping("/gif")
-    public ResponseEntity getGifByCurrency(@RequestParam("tag") String tag){
+    public ResponseEntity<?> getGifByCurrency(@RequestParam("tag") String tag){
         return gifService.getGif(tag);
     }
 }

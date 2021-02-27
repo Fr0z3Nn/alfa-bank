@@ -22,7 +22,6 @@
 - Spring Boot
 - Spring Cloud(OpenFeign)  
 - Lombok
-- Mockito
 - JUnit 5
 ***
 ## Запуск

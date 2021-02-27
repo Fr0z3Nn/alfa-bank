@@ -20,7 +20,7 @@ repositories {
 }
 
 ext {
-    set('springCloudVersion', "2020.0.0")
+    springCloudVersion = '2020.0.0'
 }
 
 dependencies {
@@ -31,6 +31,7 @@ dependencies {
     testImplementation 'org.springframework.boot:spring-boot-starter-test'
     testImplementation 'org.junit.jupiter:junit-jupiter-api:5.3.1'
     testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.3.1'
+
 }
 
 dependencyManagement {
@@ -42,3 +43,14 @@ dependencyManagement {
 test {
     useJUnitPlatform()
 }
+
+task fatJar(type: Jar){
+    manifest{
+        attributes 'Main-Class':'"ru.project.alfastonks.AlfaApplication"'
+    }
+    from{
+        configurations.compile.collect{it.isDirectory() ? it : zipTree(it)}
+    }
+    with jar
+}
+

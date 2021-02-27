@@ -1,6 +1,6 @@
 package ru.project.alfastonks.controller;
 
-import lombok.Data;
+import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -10,9 +10,9 @@ import ru.project.alfastonks.service.GifOnCurrencyExchangeRateService;
 
 
 
-@Data
 @RestController
 @RequestMapping("/api")
+@RequiredArgsConstructor
 public class CurrencyController {
 
     private final GifOnCurrencyExchangeRateService gif;

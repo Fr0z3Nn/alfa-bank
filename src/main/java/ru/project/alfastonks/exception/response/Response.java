@@ -1,4 +1,4 @@
-package ru.project.alfastonks.exception.handler.response;
+package ru.project.alfastonks.exception.response;
 
 import lombok.*;
 

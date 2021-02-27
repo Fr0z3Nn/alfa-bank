@@ -5,7 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 import ru.project.alfastonks.exception.SimpleCustomException;
-import ru.project.alfastonks.exception.handler.response.Response;
+import ru.project.alfastonks.exception.response.Response;
 
 @RestControllerAdvice
 public class GlobalExceptionHandler {

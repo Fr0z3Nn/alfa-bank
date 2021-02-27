@@ -15,8 +15,9 @@ public class DownloadServiceImpl implements DownloadService {
     private final DownloadClient downloadClient;
 
     @Override
-    public ResponseEntity<byte[]> getGifByUrl(URI url) {
-        return downloadClient.getGifByUrl(url);
+    public ResponseEntity<byte[]> getGifByUrl(URI uri) {
+        return downloadClient.getGifByUrl(uri);
     }
+
 }
 

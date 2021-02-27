@@ -48,7 +48,7 @@ public class GifOnCurrencyExchangeRateServiceImpl implements GifOnCurrencyExchan
     }
 
     private double getRateByDateAndBase(String date, String base) {
-        CurrencyDTO currencyDTO = currencyService.getCurrency(date, base).getBody();
+        CurrencyDTO currencyDTO = currencyService.getCurrency(date, base.toUpperCase()).getBody();
         return Objects.requireNonNull(currencyDTO).getRates().get("RUB");
     }
 

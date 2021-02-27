@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import ru.project.alfastonks.dto.CurrencyDTO;
 import ru.project.alfastonks.dto.GifDTO;
+import ru.project.alfastonks.exception.BadBaseException;
 import ru.project.alfastonks.service.CurrencyService;
 import ru.project.alfastonks.service.DownloadService;
 import ru.project.alfastonks.service.GifOnCurrencyExchangeRateService;
@@ -25,6 +26,9 @@ public class GifOnCurrencyExchangeRateServiceImpl implements GifOnCurrencyExchan
     private final DownloadService downloadService;
 
     public ResponseEntity<byte[]> getGifByCurrency(String base) {
+        if (isBaseNotValid(base)) {
+            throw new BadBaseException("Валюта должна состоять из 3х символов");
+        }
         String todayDate = formatDateFromNow(0);
         String yesterdayDate = formatDateFromNow(1);
         double todayRate = getRateByDateAndBase(todayDate, base);
@@ -32,6 +36,10 @@ public class GifOnCurrencyExchangeRateServiceImpl implements GifOnCurrencyExchan
         String tag = (todayRate > yesterdayRate) ? "rich" : "broke";
         URI basePathUri = URI.create(getGifUrlByTag(tag));
         return downloadService.getGifByUrl(basePathUri);
+    }
+
+    private boolean isBaseNotValid(String base) {
+        return base.length() != 3;
     }
 
     private String formatDateFromNow(int days) {

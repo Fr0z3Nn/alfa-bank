@@ -15,12 +15,15 @@ import ru.project.alfastonks.service.GifOnCurrencyExchangeRateService;
 @RequestMapping("/api")
 public class CurrencyController {
 
-
     private final GifOnCurrencyExchangeRateService gif;
 
+    @GetMapping("/gif")
+    public ResponseEntity<byte[]> getGifByCurrency(@RequestParam("base") String base) {
+        return gif.getGifByCurrency(base);
+    }
 
-   @GetMapping("/gif")
-   public ResponseEntity<byte[]> getGifByCurrency(@RequestParam("base") String base){
-       return gif.getGifByCurrency(base);
+    @GetMapping("/*")
+    public ResponseEntity<byte[]> getGifByCurrency() {
+        return gif.getGifByCurrency("USD");
     }
 }
